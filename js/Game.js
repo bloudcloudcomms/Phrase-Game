@@ -47,6 +47,53 @@ class Game {
         this.activePhrase = game.getRandomPhrase();
         this.activePhrase.addPhraseToDisplay();
     };
-}
+
+    /**
+     * Checks for winning move
+     * @return {boolean} True if game has been won, false if game wasn't
+    won */
+    checkForWin() {
+        const letter = document.querySelectorAll('.letter');
+        const show = document.querySelectorAll('.show');
+        if (letter.length === show.length) {
+            return true;
+        } else {
+            return false;
+        }
+      }
+
+    /**
+         * Increases the value of the missed property
+         * Removes a life from the scoreboard
+         * Checks if player has remaining lives and ends game if player is out
+         */
+    removeLife() {
+        const lives = document.querySelectorAll('.tries img');
+        
+        lives[this.missed].src = 'images/lostHeart.png';
+        this.missed +=1;
+
+        if (this.missed > 4) {
+            this.gameOver(false);
+        }
+    };
+
+    /**
+     * Displays game over message
+     * @param {boolean} gameWon - Whether or not the user won the game
+     */
+    gameOver(gameWon) {
+        document.getElementById('overlay').style.display = 'flex';
+        
+        if (gameWon === false) {
+            document.getElementById('game-over-message').innerHTML = "Game Over. Try again.";
+            document.getElementById('overlay').classList.replace('start', 'lose');
+        } else {
+            document.getElementById('game-over-message').innerHTML= "You Won! Good work.";
+            document.getElementById('overlay').classList.replace('start', 'win');
+        }
+    };
+
+};
 
  
