@@ -7,9 +7,16 @@ const game = new Game();
 /** 
  * Listens for click on #begin-game and calls startGame() on game object
  */
- const button = document.getElementById('btn__reset');
- button.addEventListener('click', function() {
+ const startBtn = document.getElementById('btn__reset');
+ startBtn.addEventListener('click', function() {
      game.startGame();
 
  });
 
+
+const keyboard = document.querySelectorAll('.key');
+keyboard.forEach(button => {
+    button.addEventListener('click', event => {
+        game.handleInteraction(button);
+    })
+});

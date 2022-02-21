@@ -17,10 +17,10 @@ class Game {
     * @return {array} An array of phrases that could be used in the game */
     createPhrases() {
         const phrases = [
-                        new Phrase ('life is like a box of chocolates'),
+                        new Phrase ('my precious'),
                         new Phrase ('there is no trying'),
                         new Phrase ('may the force be with you'),
-                        new Phrase ('you have to see the matrix for yourself'),
+                        new Phrase ('rosebud'),
                         new Phrase ('you talking to me'),
                         new Phrase ('you are my sunshine'),
                         new Phrase ('we are not in kansas anymore'),
@@ -63,10 +63,10 @@ class Game {
       }
 
     /**
-         * Increases the value of the missed property
-         * Removes a life from the scoreboard
-         * Checks if player has remaining lives and ends game if player is out
-         */
+     * Increases the value of the missed property
+     * Removes a life from the scoreboard
+     * Checks if player has remaining lives and ends game if player is out
+     */
     removeLife() {
         const lives = document.querySelectorAll('.tries img');
         
@@ -92,6 +92,21 @@ class Game {
             document.getElementById('game-over-message').innerHTML= "You Won! Good work.";
             document.getElementById('overlay').classList.replace('start', 'win');
         }
+    };
+
+    /**
+     * Handles onscreen keyboard button clicks
+     * @param (HTMLButtonElement) button - The clicked button element
+     */
+    handleInteraction(button) {
+        console.log(button);
+        
+        $(".disabled").on("click",function(e) { 
+            console.log("clicked"); 
+            e.preventDefault() 
+          });
+        
+
     };
 
 };
