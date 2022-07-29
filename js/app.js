@@ -4,19 +4,20 @@
 
 const game = new Game();
 
-/** 
+/**
  * Listens for click on #begin-game and calls startGame() on game object
  */
- const startBtn = document.getElementById('btn__reset');
- startBtn.addEventListener('click', function() {
-     game.startGame();
+const startBtn = document.getElementById("btn__reset");
+startBtn.addEventListener("click", () => {
+  game.startGame();
+});
 
- });
-
-
-const keyboard = document.querySelectorAll('.key');
-keyboard.forEach(button => {
-    button.addEventListener('click', event => {
-        game.handleInteraction(button);
-    })
+/**
+ * Listens for key button clicks
+ */
+document.getElementById("qwerty").addEventListener("click", (e) => {
+  const button = e.target;
+  if (button.tagName === "BUTTON") {
+    game.handleInteraction(button);
+  }
 });
